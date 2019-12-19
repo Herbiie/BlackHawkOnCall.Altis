@@ -1,0 +1,53 @@
+#include "tb3\loadouts.hpp"
+class CfgFunctions {
+	class tb3 {
+        #include "tb3\f\gear\CfgFunctions.hpp"
+	};
+	class boc {
+        #include "functions\CfgFunctions.hpp"
+	};
+};
+
+
+OnLoadName  = "Blackhawk On Call";
+OnLoadMission = "Blackhawk On Call";
+author = "The Ferret Master";
+briefingName = "Blackhawk On Call";
+overviewText = "Dynamic mission generator for full UH-60M crew";
+disabledAI = 1;
+saving = 0;
+respawn = 3;
+respawnDelay = 2;
+respawnOnStart = -1;
+respawnTemplates[] = {};
+enableDebugConsole	= 1;
+class Header
+{
+	gameType =  COOP;
+	minPlayers =  1;
+	maxPlayers = 4;
+};
+
+class Params
+{
+	class PeaceMode
+	{
+		title = "Peace Mode";
+
+		values[] = {0,1};
+
+		texts[] = {"Off","On"};
+
+		default = 0;
+	};
+	class Arsenal
+	{
+		title = "Unlimited Arsenal";
+
+		values[] = {0,1};
+
+		texts[] = {"Off","On"};
+
+		default = 1;
+	};
+};
