@@ -2,9 +2,9 @@
 //Use those bellow as an example as to creating a side and unit class.
 class TB3_Gear {
 	class BluFor {
-		class playerLoudout {
-      ace_earplugs = 1;
-
+		class playerLoadout {
+			ace_earplugs = 1;
+	
 			weapons[] = {"SMG_05_F","hgun_P07_khk_F"}; 
 			priKit[] = {"30Rnd_9x21_Mag_SMG_02"};
 			secKit[] = {};
@@ -26,12 +26,12 @@ class TB3_Gear {
 				vestContents[] = {
 					{"30Rnd_9x21_Mag_SMG_02",5},
 					{"16Rnd_9x21_Mag",2},
-					{"ACE_M14",2},
 					{"SmokeShellRed",2}
 				};
 
 			backpack[] = {"B_AssaultPack_cbr"};
 				backpackContents[] = {
+					{"DemoCharge_Remote_Mag",2},
 				};
 
 			magazines[] = {}; items[] = {};

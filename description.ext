@@ -50,4 +50,14 @@ class Params
 
 		default = 1;
 	};
+	class Smoke
+	{
+		title = "Smoke Grenade Markers";
+
+		values[] = {0,1,2};
+
+		texts[] = {"No markers","Friendly Locations Only","All locations"};
+
+		default = 2;
+	};
 };

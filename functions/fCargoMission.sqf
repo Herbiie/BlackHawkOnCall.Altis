@@ -1,7 +1,5 @@
-params ["_onCallStart"];
 private _pos1 = [[worldSize / 2, worldsize / 2, 0],0,worldsize,15,0,20,0,[[getMarkerPos "heli",5000]]] call BIS_fnc_findSafePos;
 private _pos2 = [_pos1,5000,15000,15,0,20,0,[[getMarkerPos "heli",5000]]] call BIS_fnc_findSafePos;
-missionNameSpace setVariable ["onCall",false,true];
 missionNameSpace setVariable ["missionOn",true,true];
 missionNameSpace setVariable ["bocMissions",(missionNameSpace getVariable "bocMissions") + 1,true];
 
@@ -65,8 +63,10 @@ _marker2 setMarkerType "mil_end";
 _marker2 setMarkerText "Mission End";
 
 private _cargo = "B_CargoNet_01_ammo_F" createVehicle _pos1;
-_smoke1 = "SmokeShellBlue_Infinite" createVehicle _pos1;
-_smoke2 = "SmokeShellGreen_Infinite" createVehicle _pos2;
+if ("Smoke" call BIS_fnc_getParamValue > 0) then {
+	_smoke1 = "SmokeShellBlue_Infinite" createVehicle _pos1;
+	_smoke2 = "SmokeShellGreen_Infinite" createVehicle _pos2;
+};
 
 private _task = format ["task%1",missionNameSpace getVariable "bocMissions"];
 
@@ -89,12 +89,13 @@ waitUntil {((_cargo distance _pos2) < 20) && (ropeAttachedTo _cargo != (missionN
 [_task,"SUCCEEDED"] call BIS_fnc_taskSetState;
 
 deleteVehicle _cargo;
-deleteVehicle _smoke1;
-deleteVehicle _smoke2;
+if ("Smoke" call BIS_fnc_getParamValue > 0) then {
+	deleteVehicle _smoke1;
+	deleteVehicle _smoke2;
+};
 deleteMarker _marker1;
 deleteMarker _marker2;
 
-missionNameSpace setVariable ["onCall",_onCallStart,true];
 missionNameSpace setVariable ["missionOn",false,true];
 
 waitUntil {((missionNameSpace getVariable "currentHeli") distance _pos2) > 1500};

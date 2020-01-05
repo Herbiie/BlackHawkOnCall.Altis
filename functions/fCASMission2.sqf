@@ -11,7 +11,7 @@ private _dir1 = _pos1 getDir _pos2;
 	_x setUnitPos "middle";
 	_x setCaptive true;
 } forEach units _group1;
-private _group2 = [_pos2, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfSquad")] call BIS_fnc_spawnGroup;
+private _group2 = [_pos2, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Armored" >> "OIA_TankPlatoon")] call BIS_fnc_spawnGroup;
 private _dir2 = _pos2 getDir _pos1;
 {
 	_x disableai "move";
@@ -43,7 +43,7 @@ private _task = format ["task%1",missionNameSpace getVariable "bocMissions"];
 
 [WEST, [_task], ["Friendly infantry unit has requested Close Air Support.", format ["Task #%1: Close Air Support",missionNameSpace getVariable "bocMissions"], ""], objNull,"CREATED"] call BIS_fnc_taskCreate;
 
-[WEST, [format ["%1start",_task],_task], ["Target marked with red smoke!", "Destroy enemy infantry", "missionStart"], getMarkerPos "missionStart","ASSIGNED"] call BIS_fnc_taskCreate;
+[WEST, [format ["%1start",_task],_task], ["Target marked with red smoke!", "Destroy enemy armour", "missionStart"], getMarkerPos "missionStart","ASSIGNED"] call BIS_fnc_taskCreate;
 
 waitUntil {({side _x == east && (_x distance _pos2) < 50} count allUnits) == 0};
 
