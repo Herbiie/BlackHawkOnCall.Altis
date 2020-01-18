@@ -14,6 +14,11 @@ class missions {
 		missionName = "Close Air Support (Armour)";
 		peacemode = 0;
     };
+	class insertMission {
+        file = "functions\fInsertMission.sqf";
+		missionName = "Air Assault";
+		peacemode = 1;
+    };
 };
 
 class core {

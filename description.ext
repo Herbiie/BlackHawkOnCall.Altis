@@ -11,7 +11,7 @@ class CfgFunctions {
 
 OnLoadName  = "Blackhawk On Call";
 OnLoadMission = "Blackhawk On Call";
-author = "The Ferret Master";
+author = "Herbiie";
 briefingName = "Blackhawk On Call";
 overviewText = "Dynamic mission generator for full UH-60M crew";
 disabledAI = 1;
@@ -52,7 +52,7 @@ class Params
 	};
 	class Smoke
 	{
-		title = "Smoke Grenade Markers";
+		title = "Smoke Markers";
 
 		values[] = {0,1,2};
 

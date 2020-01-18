@@ -23,8 +23,10 @@ private _marker1 = createMarker ["missionStart",_pos2];
 _marker1 setMarkerColor "colorOPFOR";
 _marker1 setMarkerType "mil_destroy";
 _marker1 setMarkerText "Target";
+private _smokeF = objNull;
+private _smoke = objNull;
 if ("Smoke" call BIS_fnc_getParamValue > 0) then {
-	_smokeF = "SmokeShellRed_Infinite" createVehicle _pos1;
+	_smokeF = "SmokeShellBlue_Infinite" createVehicle _pos1;
 };
 if ("Smoke" call BIS_fnc_getParamValue > 1) then {
 	_smoke = "SmokeShellRed_Infinite" createVehicle _pos2;

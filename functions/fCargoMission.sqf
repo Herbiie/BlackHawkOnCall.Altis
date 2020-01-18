@@ -63,6 +63,8 @@ _marker2 setMarkerType "mil_end";
 _marker2 setMarkerText "Mission End";
 
 private _cargo = "B_CargoNet_01_ammo_F" createVehicle _pos1;
+private _smoke1 = objNull;
+private _smoke2 = objNull;
 if ("Smoke" call BIS_fnc_getParamValue > 0) then {
 	_smoke1 = "SmokeShellBlue_Infinite" createVehicle _pos1;
 	_smoke2 = "SmokeShellGreen_Infinite" createVehicle _pos2;
