@@ -1,10 +1,10 @@
 private _helicopters = "((configName _x) isKindOf ['vtx_H60_base', configFile >> 'CfgVehicles']) && (getNumber (_x >> 'scope') == 2)" configClasses (configFile >> "CfgVehicles");
 
-private _bocMissionFunctions = "true" configClasses (missionConfigFile >> "CfgFunctions" >> "boc" >> "missions");
+private _bocMissionFunctions = "true" configClasses (ConfigFile >> "CfgFunctions" >> "boc" >> "missions");
 
 
 if ("PeaceMode" call BIS_fnc_getParamValue == 1) then {
-	_bocMissionFunctions = "getNumber (_x >> 'peaceMode') > 0" configClasses (missionConfigFile >> "CfgFunctions" >>"boc" >> "missions")
+	_bocMissionFunctions = "getNumber (_x >> 'peaceMode') > 0" configClasses (ConfigFile >> "CfgFunctions" >>"boc" >> "missions")
 };
 
 _mainAction = ["boc_OnCall", "Toggle on Call", "", {if (missionNameSpace getVariable "onCall") then {missionNameSpace setVariable ["onCall",false,true]} else {missionNameSpace setVariable ["onCall",true,true]}}, {(leader group player) == player}] call ace_interact_menu_fnc_createAction;
@@ -29,13 +29,9 @@ _missionsAction = ["boc_Missions", "Request Mission", "", {}, {((leader group pl
 	private _type = configName _x;
 	private _thisAction = [format ["boc_Heli%1",_forEachIndex], _name, "", {
 		params ["_target", "_player", "_type"];
-		if (((nearestObject getMarkerPos "heli") distance getMarkerPos "heli") > 7) then {
-			private _heli = _type createVehicle getMarkerPos "heli";
-			missionNameSpace setVariable ["currentHeli",_heli,true];
-			[] remoteExec ["boc_fnc_HeliCheck",2];
-		} else {
-			hint "No space";
-		};
+		private _heli = _type createVehicle getMarkerPos "heli";
+		missionNameSpace setVariable ["currentHeli",_heli,true];
+		[] remoteExec ["boc_fnc_HeliCheck",2];
 	}, {((leader group player) == player) && isNull (missionNameSpace getVariable "currentHeli")},{},_type] call ace_interact_menu_fnc_createAction;
 	[heliSelector,0,["ACE_MainActions"],_thisAction] call ace_interact_menu_fnc_addActionToObject;
 } forEach _helicopters;
