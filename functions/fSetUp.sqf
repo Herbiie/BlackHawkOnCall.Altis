@@ -3,15 +3,17 @@ missionNameSpace setVariable ["onCall",false,true];
 missionNameSpace setVariable ["missionOn",false,true];
 missionNameSpace setVariable ["bocMissions",0,true];
 
-private _bocMissionFunctions = "true" configClasses (missionConfigFile >> "CfgFunctions" >>"boc" >> "missions");
+private _bocMissionFunctions = "true" configClasses (ConfigFile >> "CfgFunctions" >>"boc" >> "missions");
 
 if ("PeaceMode" call BIS_fnc_getParamValue == 1) then {
-	_bocMissionFunctions = "getNumber (_x >> 'peaceMode') > 0" configClasses (missionConfigFile >> "CfgFunctions" >>"boc" >> "missions")
+	_bocMissionFunctions = "getNumber (_x >> 'peaceMode') > 0" configClasses (ConfigFile >> "CfgFunctions" >>"boc" >> "missions")
 };
 
 if ("Arsenal" call BIS_fnc_getParamValue == 1) then {
 	[box, true] call ace_arsenal_fnc_initBox;
 };
+private _spawnPos = getMarkerPos "heli";
+createMarker ["respawn_west",_spawnPos];
 
 while {true} do {
 	waitUntil {((missionNameSpace getVariable "onCall")) && !(missionNameSpace getVariable "missionOn")};

@@ -1,4 +1,4 @@
-private _pos1 = [[worldSize / 2, worldsize / 2, 0],0,worldsize,15,0,20,0,[[getMarkerPos "heli",5000]]] call BIS_fnc_findSafePos;
+private _pos1 = [[worldSize / 2, worldsize / 2, 0],0,worldsize / 2,15,0,20,0,[[getMarkerPos "heli",5000]]] call BIS_fnc_findSafePos;
 private _pos2 = [_pos1,200,400,15,0,20,0,[[getMarkerPos "heli",5000]]] call BIS_fnc_findSafePos;
 missionNameSpace setVariable ["onCall",false,true];
 missionNameSpace setVariable ["missionOn",true,true];
